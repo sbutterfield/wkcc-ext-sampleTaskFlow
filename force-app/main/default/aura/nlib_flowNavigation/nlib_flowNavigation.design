@@ -1,0 +1,123 @@
+<!--
+  - MIT License
+  -
+  - Copyright (c) 2018 Scott McClung
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -->
+
+<design:component>
+    <design:attribute name="customBtn1Url" label="Custm Btn 1 Url"
+                      description="The relative url the custom button should navigate to"/>
+    <design:attribute name="customBtn2Url" label="Custm Btn 2 Url"
+                      description="The relative url the custom button should navigate to"/>
+
+
+    <design:attribute name="pauseBtnLabel" label="Pause Btn Label"
+                      description="The text to be displayed inside the Pause button"/>
+    <design:attribute name="backBtnLabel" label="Back Btn Label"
+                      description="The text to be displayed inside the Back button"/>
+    <design:attribute name="nextBtnLabel" label="Next Btn Label"
+                      description="The text to be displayed inside the Next button"/>
+    <design:attribute name="finishBtnLabel" label="Finish Btn Label"
+                      description="The text to be displayed inside the Finish button"/>
+    <design:attribute name="customBtn1Label" label="Custm Btn 1 Label"
+                      description="The text to be displayed inside the Custom button"/>
+    <design:attribute name="customBtn2Label" label="Custm Btn 2 Label"
+                      description="The text to be displayed inside the Custom button"/>
+
+    <design:attribute name="pauseBtnPosition" label="Pause Btn Position"
+                      description="Display Pause button on left or right side (defaults to right)"/>
+    <design:attribute name="backBtnPosition" label="Back Btn Position"
+                      description="Display Back button on left or right side (defaults to left)"/>
+    <design:attribute name="nextBtnPosition" label="Next Btn Position"
+                      description="Display Next button on left or right side (defaults to right)"/>
+    <design:attribute name="finishBtnPosition" label="Finish Btn Position"
+                      description="Display Finish button on left or right side (defaults to right)"/>
+    <design:attribute name="customBtn1Position" label="Custm Btn 1 Position"
+                      description="Display Custom button on left or right side (defaults to right)"/>
+    <design:attribute name="customBtn2Position" label="Custm Btn 2 Position"
+                      description="Display Custom button on left or right side (defaults to right)"/>
+
+    <design:attribute name="pauseBtnVariant" label="Pause Btn Variant"
+                      description="The variant changes the appearance of the Pause button. Accepted variants include base, neutral, brand, destructive, inverse and success. (Defaults to neutral)"/>
+    <design:attribute name="backBtnVariant" label="Back Btn Variant"
+                      description="The variant changes the appearance of the Back button. Accepted variants include base, neutral, brand, destructive, inverse and success. (Defaults to neutral)"/>
+    <design:attribute name="nextBtnVariant" label="Next Btn Variant"
+                      description="The variant changes the appearance of the Next button. Accepted variants include base, neutral, brand, destructive, inverse and success. (Defaults to brand)"/>
+    <design:attribute name="finishBtnVariant" label="Finish Btn Variant"
+                      description="The variant changes the appearance of the Finish button. Accepted variants include base, neutral, brand, destructive, inverse and success. (Defaults to brand)"/>
+    <design:attribute name="customBtn1Variant" label="Custm Btn 1 Variant"
+                      description="The variant changes the appearance of the Custom button. Accepted variants include base, neutral, brand, destructive, inverse and success. (Defaults to neutral)"/>
+    <design:attribute name="customBtn2Variant" label="Custm Btn 2 Variant"
+                      description="The variant changes the appearance of the Custom button. Accepted variants include base, neutral, brand, destructive, inverse and success. (Defaults to neutral)"/>
+
+    <design:attribute name="pauseBtnStyleClass" label="Pause Btn Style Class"
+                      description="An SLDS class for the Pause button"/>
+    <design:attribute name="backBtnStyleClass" label="Back Btn Style Class"
+                      description="An SLDS class for the Back button"/>
+    <design:attribute name="nextBtnStyleClass" label="Next Btn Style Class"
+                      description="An SLDS class for the Next button"/>
+    <design:attribute name="finishBtnStyleClass" label="Finish Btn Style Class"
+                      description="An SLDS class for the Finish button"/>
+    <design:attribute name="customBtn1StyleClass" label="Custm Btn 1 Style Class"
+                      description="An SLDS class for the Custom button"/>
+    <design:attribute name="customBtn2StyleClass" label="Custm Btn 2 Style Class"
+                      description="An SLDS class for the Custom button"/>
+
+    <design:attribute name="pauseBtnIconName" label="Pause Btn Icon Name"
+                      description="The SLDS name of the icon on the Pause button. Names are written in the format 'utility:down' where 'utility' is the category, and 'down' is the specific icon to be displayed"/>
+    <design:attribute name="backBtnIconName" label="Back Btn Icon Name"
+                      description="The SLDS name of the icon on the Back button. Names are written in the format 'utility:down' where 'utility' is the category, and 'down' is the specific icon to be displayed"/>
+    <design:attribute name="nextBtnIconName" label="Next Btn Icon Name"
+                      description="The SLDS name of the icon on the Next button. Names are written in the format 'utility:down' where 'utility' is the category, and 'down' is the specific icon to be displayed"/>
+    <design:attribute name="finishBtnIconName" label="Finish Btn Icon Name"
+                      description="The SLDS name of the icon on the Finish button. Names are written in the format 'utility:down' where 'utility' is the category, and 'down' is the specific icon to be displayed"/>
+    <design:attribute name="customBtn1IconName" label="Custm Btn 1 Icon Name"
+                      description="The SLDS name of the icon on the Custom button. Names are written in the format 'utility:down' where 'utility' is the category, and 'down' is the specific icon to be displayed"/>
+    <design:attribute name="customBtn2IconName" label="Custm Btn 2 Icon Name"
+                      description="The SLDS name of the icon on the Custom button. Names are written in the format 'utility:down' where 'utility' is the category, and 'down' is the specific icon to be displayed"/>
+
+    <design:attribute name="pauseBtnIconPosition" label="Pause Btn Icon Position"
+                      description="Describes the position of the Pause button icon with respect to the label. Options include left and right. (Defaults to left)"/>
+    <design:attribute name="backBtnIconPosition" label="Back Btn Icon Position"
+                      description="Describes the position of the Back button icon with respect to the label. Options include left and right. (Defaults to left)"/>
+    <design:attribute name="nextBtnIconPosition" label="Next Btn Icon Position"
+                      description="Describes the position of the Next button icon with respect to the label. Options include left and right. (Defaults to left)"/>
+    <design:attribute name="finishBtnIconPosition" label="Finish Btn Icon Position"
+                      description="Describes the position of the Finish button icon with respect to the label. Options include left and right. (Defaults to left)"/>
+    <design:attribute name="customBtn1IconPosition" label="Custm Btn 1 Icon Position"
+                      description="Describes the position of the Custom button icon with respect to the label. Options include left and right. (Defaults to left)"/>
+    <design:attribute name="customBtn2IconPosition" label="Custm Btn 2 Icon Position"
+                      description="Describes the position of the Custom button icon with respect to the label. Options include left and right. (Defaults to left)"/>
+
+    <design:attribute name="pauseBtnAriaLabel" label="Pause Btn Accessibility Label"
+                      description="Label describing the Pause button to assistive technologies"/>
+    <design:attribute name="backBtnAriaLabel" label="Back Btn Accessibility Label"
+                      description="Label describing the Back button to assistive technologies"/>
+    <design:attribute name="nextBtnAriaLabel" label="Next Btn Accessibility Label"
+                      description="Label describing the Next button to assistive technologies"/>
+    <design:attribute name="finishBtnAriaLabel" label="Finish Btn Accessibility Label"
+                      description="Label describing the Finish button to assistive technologies"/>
+    <design:attribute name="customBtn1AriaLabel" label="Custm Btn 1 Accessibility Label"
+                      description="Label describing the Custom button to assistive technologies"/>
+    <design:attribute name="customBtn2AriaLabel" label="Custm Btn 2 Accessibility Label"
+                      description="Label describing the Custom button to assistive technologies"/>
+
+</design:component>

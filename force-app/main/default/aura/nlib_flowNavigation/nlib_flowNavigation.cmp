@@ -1,0 +1,224 @@
+<!--
+  - MIT License
+  -
+  - Copyright (c) 2018 Scott McClung
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -->
+
+<aura:component access="global" description="nlib_flowNavigation"
+                implements="lightning:availableForFlowScreens">
+
+    <aura:attribute name="canPause" type="Boolean"/>
+    <aura:attribute name="canBack" type="Boolean"/>
+    <aura:attribute name="canNext" type="Boolean"/>
+    <aura:attribute name="canFinish" type="Boolean"/>
+
+    <aura:attribute name="pauseBtnPosition" type="String" default="right"/>
+    <aura:attribute name="backBtnPosition" type="String" default="left"/>
+    <aura:attribute name="nextBtnPosition" type="String" default="right"/>
+    <aura:attribute name="finishBtnPosition" type="String" default="right"/>
+    <aura:attribute name="customBtn1Position" type="String" default="right"/>
+    <aura:attribute name="customBtn2Position" type="String" default="right"/>
+
+    <aura:attribute name="pauseBtnLabel" type="String" default="Pause"/>
+    <aura:attribute name="backBtnLabel" type="String" default="Previous"/>
+    <aura:attribute name="nextBtnLabel" type="String" default="Next"/>
+    <aura:attribute name="finishBtnLabel" type="String" default="Finish"/>
+    <aura:attribute name="customBtn1Label" type="String" default=""/>
+    <aura:attribute name="customBtn2Label" type="String" default=""/>
+
+    <aura:attribute name="pauseBtnVariant" type="String" default="neutral"/>
+    <aura:attribute name="backBtnVariant" type="String" default="neutral"/>
+    <aura:attribute name="nextBtnVariant" type="String" default="brand"/>
+    <aura:attribute name="finishBtnVariant" type="String" default="brand"/>
+    <aura:attribute name="customBtn1Variant" type="String" default="neutral"/>
+    <aura:attribute name="customBtn2Variant" type="String" default="neutral"/>
+
+    <aura:attribute name="pauseBtnStyleClass" type="String" default=""/>
+    <aura:attribute name="backBtnStyleClass" type="String" default=""/>
+    <aura:attribute name="nextBtnStyleClass" type="String" default=""/>
+    <aura:attribute name="finishBtnStyleClass" type="String" default=""/>
+    <aura:attribute name="customBtn1StyleClass" type="String" default=""/>
+    <aura:attribute name="customBtn2StyleClass" type="String" default=""/>
+
+    <aura:attribute name="pauseBtnIconName" type="String" default=""/>
+    <aura:attribute name="backBtnIconName" type="String" default=""/>
+    <aura:attribute name="nextBtnIconName" type="String" default=""/>
+    <aura:attribute name="finishBtnIconName" type="String" default=""/>
+    <aura:attribute name="customBtn1IconName" type="String" default=""/>
+    <aura:attribute name="customBtn2IconName" type="String" default=""/>
+
+    <aura:attribute name="pauseBtnIconPosition" type="String" default="left"/>
+    <aura:attribute name="backBtnIconPosition" type="String" default="left"/>
+    <aura:attribute name="nextBtnIconPosition" type="String" default="left"/>
+    <aura:attribute name="finishBtnIconPosition" type="String" default="left"/>
+    <aura:attribute name="customBtn1IconPosition" type="String" default="left"/>
+    <aura:attribute name="customBtn2IconPosition" type="String" default="left"/>
+
+    <aura:attribute name="pauseBtnTitle" type="String" default=""/>
+    <aura:attribute name="backBtnTitle" type="String" default=""/>
+    <aura:attribute name="nextBtnTitle" type="String" default=""/>
+    <aura:attribute name="finishBtnTitle" type="String" default=""/>
+    <aura:attribute name="customBtn1Title" type="String" default=""/>
+    <aura:attribute name="customBtn2Title" type="String" default=""/>
+
+    <aura:attribute name="pauseBtnAriaLabel" type="String" default="pause"/>
+    <aura:attribute name="backBtnAriaLabel" type="String" default="previous"/>
+    <aura:attribute name="nextBtnAriaLabel" type="String" default="next"/>
+    <aura:attribute name="finishBtnAriaLabel" type="String" default="finish"/>
+    <aura:attribute name="customBtn1AriaLabel" type="String" default="finish"/>
+    <aura:attribute name="customBtn2AriaLabel" type="String" default="finish"/>
+
+    <aura:attribute name="customBtn1Url" type="String" default="/"/>
+    <aura:attribute name="customBtn2Url" type="String" default="/"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}"/>
+
+    <div aura:id="actionButtonBar" class="slds-clearfix slds-p-top_medium">
+        <!-- If Previous is available, display to the left -->
+        <div class="slds-float_left">
+
+            <aura:if isTrue="{! and(v.canBack, v.backBtnPosition == 'left') }">
+                <lightning:button aura:id="BACK" label="{! v.backBtnLabel }"
+                                  variant="{! v.backBtnVariant }"
+                                  class="{! v.backBtnStyleClass }"
+                                  iconName="{! v.backBtnIconName }"
+                                  iconPosition="{! v.backBtnIconPosition }"
+                                  title="{! v.backBtnTitle }"
+                                  ariaLabel="{! v.backBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.canPause, v.pauseBtnPosition == 'left') }">
+                <lightning:button aura:id="PAUSE" label="{! v.pauseBtnLabel }"
+                                  variant="{! v.pauseBtnVariant }"
+                                  class="{! v.pauseBtnStyleClass }"
+                                  iconName="{! v.pauseBtnIconName }"
+                                  iconPosition="{! v.pauseBtnIconPosition }"
+                                  title="{! v.pauseBtnTitle }"
+                                  ariaLabel="{! v.pauseBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.canNext, v.nextBtnPosition == 'left') }">
+                <lightning:button aura:id="NEXT" label="{! v.nextBtnLabel }"
+                                  variant="{! v.nextBtnVariant }"
+                                  class="{! v.nextBtnStyleClass }"
+                                  iconName="{! v.nextBtnIconName }"
+                                  iconPosition="{! v.nextBtnIconPosition }"
+                                  title="{! v.nextBtnTitle }"
+                                  ariaLabel="{! v.nextBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.canFinish, v.finishBtnPosition == 'left') }">
+                <lightning:button aura:id="FINISH" label="{! v.finishBtnLabel }"
+                                  variant="{! v.finishBtnVariant }"
+                                  class="{! v.finishBtnStyleClass }"
+                                  iconName="{! v.finishBtnIconName }"
+                                  iconPosition="{! v.finishBtnIconPosition }"
+                                  title="{! v.finishBtnTitle }"
+                                  ariaLabel="{! v.finishBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.customBtn1Label != '', v.customBtn1Position == 'left') }">
+                <lightning:button aura:id="customBtn1" label="{! v.customBtn1Label }"
+                                  variant="{! v.customBtn1Variant }"
+                                  class="{! v.customBtn1StyleClass }"
+                                  iconName="{! v.customBtn1IconName }"
+                                  iconPosition="{! v.customBtn1IconPosition }"
+                                  title="{! v.customBtn1Title }"
+                                  ariaLabel="{! v.customBtn1AriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.customBtn2Label != '', v.customBtn2Position == 'left') }">
+                <lightning:button aura:id="customBtn2" label="{! v.customBtn2Label }"
+                                  variant="{! v.customBtn2Variant }"
+                                  class="{! v.customBtn2StyleClass }"
+                                  iconName="{! v.customBtn2IconName }"
+                                  iconPosition="{! v.customBtn2IconPosition }"
+                                  title="{! v.customBtn2Title }"
+                                  ariaLabel="{! v.customBtn2AriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+
+        </div>
+        <div class="slds-float_right">
+
+            <aura:if isTrue="{! and(v.canBack, v.backBtnPosition == 'right') }">
+                <lightning:button aura:id="BACK" label="{! v.backBtnLabel }"
+                                  variant="{! v.backBtnVariant }"
+                                  class="{! v.backBtnStyleClass }"
+                                  iconName="{! v.backBtnIconName }"
+                                  iconPosition="{! v.backBtnIconPosition }"
+                                  title="{! v.backBtnTitle }"
+                                  ariaLabel="{! v.backBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.canPause, v.pauseBtnPosition == 'right') }">
+                <lightning:button aura:id="PAUSE" label="{! v.pauseBtnLabel }"
+                                  variant="{! v.pauseBtnVariant }"
+                                  class="{! v.pauseBtnStyleClass }"
+                                  iconName="{! v.pauseBtnIconName }"
+                                  iconPosition="{! v.pauseBtnIconPosition }"
+                                  title="{! v.pauseBtnTitle }"
+                                  ariaLabel="{! v.pauseBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.canNext, v.nextBtnPosition == 'right') }">
+                <lightning:button aura:id="NEXT" label="{! v.nextBtnLabel }"
+                                  variant="{! v.nextBtnVariant }"
+                                  class="{! v.nextBtnStyleClass }"
+                                  iconName="{! v.nextBtnIconName }"
+                                  iconPosition="{! v.nextBtnIconPosition }"
+                                  title="{! v.nextBtnTitle }"
+                                  ariaLabel="{! v.nextBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.canFinish, v.finishBtnPosition == 'right') }">
+                <lightning:button aura:id="FINISH" label="{! v.finishBtnLabel }"
+                                  variant="{! v.finishBtnVariant }"
+                                  class="{! v.finishBtnStyleClass }"
+                                  iconName="{! v.finishBtnIconName }"
+                                  iconPosition="{! v.finishBtnIconPosition }"
+                                  title="{! v.finishBtnTitle }"
+                                  ariaLabel="{! v.finishBtnAriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.customBtn1Label != '', v.customBtn1Position == 'right') }">
+                <lightning:button aura:id="customBtn1" label="{! v.customBtn1Label }"
+                                  variant="{! v.customBtn1Variant }"
+                                  class="{! v.customBtn1StyleClass }"
+                                  iconName="{! v.customBtn1IconName }"
+                                  iconPosition="{! v.customBtn1IconPosition }"
+                                  title="{! v.customBtn1Title }"
+                                  ariaLabel="{! v.customBtn1AriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+            <aura:if isTrue="{! and(v.customBtn2Label != '', v.customBtn2Position == 'right') }">
+                <lightning:button aura:id="customBtn2" label="{! v.customBtn2Label }"
+                                  variant="{! v.customBtn2Variant }"
+                                  class="{! v.customBtn2StyleClass }"
+                                  iconName="{! v.customBtn2IconName }"
+                                  iconPosition="{! v.customBtn2IconPosition }"
+                                  title="{! v.customBtn2Title }"
+                                  ariaLabel="{! v.customBtn2AriaLabel }"
+                                  onclick="{! c.onButtonPressed }"/>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>
