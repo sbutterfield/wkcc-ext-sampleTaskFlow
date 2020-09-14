@@ -10,10 +10,5 @@
 		<members>Task_After_Update_Automations</members>
 		<name>Flow</name>
 	</types>
-	<types>
-		<members>Facility_Signs_Automation</members>
-		<members>Task_After_Update_Automations</members>
-		<name>FlowDefinition</name>
-	</types>
 	<version>49.0</version>
 </Package>
